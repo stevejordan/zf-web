@@ -1,0 +1,63 @@
+<?php 
+$this->headLink()->prependStylesheet($this->basePath() . '/css/manual/learn.css');
+$this->layout()->active = 'learn';
+$this->render('manual/page-controller/learn/sidebar');
+?>
+
+<h1>Learn</h1>
+<p>
+    No matter what your preferred format or experience level, we have the docs you're looking for.
+</p>
+
+<hr/>
+
+<h2>Getting started</h2>
+
+<p>
+    Our QuickStart will take you on a short tour of some important Zend Framework components while demonstrating how a ZF2 or ZF1 application can be built from the ground up.     
+    <br /><br /><a href="/manual/2.0/en/user-guide/overview.html">Zend Framework 2</a> - <a href="/manual/1.12/en/learning.quickstart.html">Zend Framework 1</a>
+</p>
+
+<h2>Reference Guide</h2>
+
+<p>
+    With over 1000 pages and 500 examples, our Reference Guide complements quality code with quality documentation. 
+    <br /><br /><a href="/manual/2.0/en/index.html">Zend Framework 2</a> - <a href="/manual/1.12/en/manual.html">Zend Framework 1</a>
+</p>
+
+<h2>API</h2>
+
+<p>
+    Looking for a particular method's signature? Can't remember the name of a constant? With Zend Framework's thoroughly self-documenting codebase, you can answer all your API questions with a few clicks. 
+    <br /><br /><a href="<?php echo $this->url('docs/api') ?>#zf2">Zend Framework 2</a> - <a href="<?php echo $this->url('docs/api') ?>#zf1">Zend Framework 1</a>
+</p>
+
+<h2>Webinars</h2>
+
+<p>
+    With everything from webinars to podcasts, you'll be able to find presentations, interviews, and howto's in your preferred format. 
+    Visit the <a href="http://www.zend.com/en/company/events/">Zend's Events Page</a> to view a list of upcoming Webinars or <a href="http://www.zend.com/en/resources/webinars/framework">click here</a> to watch the recorded webinars.
+</p>
+
+<h2>Training & Certification</h2>
+
+<p>
+    Specialized Training Curriculum from Zend designed with leaders from the 
+    Zend Framework Community. <a href="<?php echo $this->url('learn/training-and-certification') ?>">Learn more.</a>
+</p>
+
+<h2>Support &amp; Consulting</h2>
+
+<p>
+    Zend provides support for Zend Framework via Zend Server. Additionally, 
+    Zend offers a variety of consulting services for PHP and Zend Framework.
+    <a href="<?php echo $this->url('learn/training-and-certification') ?>">Learn more.</a>
+</p>
+
+<hr />
+
+<p>
+   Still haven't found exactly what you're looking for? More articles can be 
+   found at <a href="http://devzone.zend.com/category/zend-framework/">Zend's 
+   DevZone</a>.
+</p>

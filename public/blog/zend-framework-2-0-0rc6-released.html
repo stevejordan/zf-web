@@ -1,0 +1,350 @@
+<!DOCTYPE html><html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+
+    <title>Zend Framework 2.0.0rc6 Released! - Zend Framework - Zend Framework</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <link href="/css/main.css" media="screen" rel="stylesheet" type="text/css" >
+<link href="/images/Application/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" >
+<link href="/css/ZfSiteBlog/blog.css" media="screen" rel="stylesheet" type="text/css" >
+<link href="/blog/feed-atom.xml" rel="alternate" type="application/atom+xml" title="Zend Framework Atom Feed" >
+<link href="/blog/feed-rss.xml" rel="alternate" type="application/rss+xml" title="Zend Framework RSS Feed" >
+<link href="/security/feed/" rel="alternate" type="application/rss+xml" title="Zend Framework Security Advisories" >
+<link href="/blog/feed-rss.xml" rel="alternate" type="application/rss+xml" title="Zend Framework Blog RSS Feed" >
+<link href="/blog/feed-atom.xml" rel="alternate" type="application/atom+xml" title="Zend Framework Blog Atom Feed" >
+<link href="/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" >
+        <script data-dojo-config="async: true, dojoBlankHtmlUrl: '/js/ZfSiteBlog/blank.html',
+    packages: [ 
+        {
+            name: 'ZfSiteBlog',
+            location: '/js/ZfSiteBlog'
+        } ]" src="//ajax.googleapis.com/ajax/libs/dojo/1.8.0/dojo/dojo.js"></script>
+    
+    <script type="text/javascript">
+    //<!--
+    require(["ZfSiteBlog/blog"]);    //-->
+</script>
+        <script type="text/javascript">
+        function setCustomVar() {
+            var t = _gat._getTrackerByName();
+            if (t._getVisitorCustomVar(1) === undefined) {
+                t._setCustomVar(1, 'subdomains', '<value:framework>', 2);
+            }
+        }
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-291885-1']);
+        _gaq.push(['_setDomainName', '.zend.com']);
+        _gaq.push(setCustomVar);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+        })();
+
+        var google_conversion_id = 1072138399;
+        var google_conversion_label = "PTX5CIfdwAMQn5Ge_wM";
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+    </script>
+  </head>
+  <body>
+    <div id="wrapper-head-top">
+      <div id="head-top">
+        <div id="head-top-logo">
+            <a href="/">
+            <img src="/images/logo.png" width="173" height="41" alt="Zend Framework" />
+          </a>
+        </div>
+        <div id="head-top-search">
+          <form method="get" action="///www.google.com/search" target="_blank">
+            <input type="text" name="q" value="" maxlength="255" placeholder="Search in the site" />
+            <input type="hidden" name="sitesearch" value="framework.zend.com" />
+          </form>
+        </div>
+        <div id="head-top-nav">
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/learn">Learn</a></li>
+            <li><a href="/downloads/">Get Started</a></li>
+            <li><a href="/participate/">Participate</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="top-header-shadow"></div>
+    <a href="https://github.com/zendframework/zf2"><img style="position: absolute; top: 66px; right: 0; border: 0;" src="/images/fork-us-on-github.png" alt="Fork us on GitHub"></a>
+        <div id="main-content-wrapper">
+      <div id="site-content">
+          <div class="overview">
+    <ul>
+        <li><a href="/blog/index.html">Return to entries</a></li>
+    </ul>
+    <aside class="four columns offset-by-one omega sidebar blog">
+        <div class="metadata">
+            <ul>
+                <li>Posted on <b>2012-08-29 13:55:00</b>.</li>
+                <li>Last updated on <b>2012-08-29 13:55:00</b>.</li>
+            </ul>
+        </div>
+    </aside>
+    
+    </div>
+    
+      <div class="main-content two">
+        <h1 style="text-align: right">ZF Blog</h1>
+
+<article class="eleven columns alpha blog">
+<h2>Zend Framework 2.0.0rc6 Released!</h2>
+<p>
+The Zend Framework community is pleased to announce the immediate availability
+of Zend Framework 2.0.0rc6! Packages and installation instructions are
+available at:
+</p>
+
+<ul class="ul">
+    <li>
+    <a href="http://packages.zendframework.com/">http://packages.zendframework.com/</a>
+    </li>
+</ul><p>
+We've been releasing release candidates weekly since mid-July. 
+At this time, RC6 is slated to be the last release candidate before shipping a 
+stable version. 
+</p>
+
+<p>
+RC6 has continued the cycle of decreasing numbers of pull requests, lending 
+weight to the idea that we are hitting a stable API. Around 30 patches
+were handled -- though not all were merged -- ranging from small consistency 
+fixes to solutions for often-reported issues. Additionally, around 20 
+documentation patches were handled, providing a steady stream of updates
+for the user guide.
+</p>
+
+<p>
+The full changelog is as follows:
+</p>
+
+<pre>
+- Zend\Config
+  - The INI adapter now allows bracket notation for appending values to an array
+    within INI definitions.
+- Zend\Db
+  - ResultInterface adds isBuffered() method for checking if the resultset is
+    buffered or not. Allows for more fine grained control of result set
+    buffering, including using the database engine's native buffering.
+  - Insertions with multi-part keys now work properly.
+  - Expression objects may now be passed to the order() method of a Select
+    object.
+- Zend\Form
+  - You can now omit error messages on elements when rendering via formRow(), by
+    passing a boolean false as the third argument of the helper.
+  - You can now use concrete hydrator instances with the factory.
+  - You may now set the CSRF validator class and/or options to use on the Csrf
+    element
+  - The Select, Radio, and MultiCheckbox elements and view helpers were
+    refactored to move value options into properties, instead of attributes.
+    This makes them more consistent with other elements, and simplifies the
+    interfaces.
+  - Forms now lazy-load an input filter if none has been specified; this should
+    simplify usage for many, and remove the "no input filter attached"
+    exception.
+  - All form helpers for buttons (button, submit, reset) now allow translation.
+  - The formRow() view helper now allows you to set the CSS class used to
+    designate an input with errors.
+- Zend\Http
+  - Some browser/web server combingations set SERVER_NAME to the IPv6 address,
+    and enclose it in brackets. The PhpEnvironment\Request object now correctly
+    detects such situations.
+  - The Socket client will only fallback to SSLv3 if the ssltransport
+    configuration key is not set (instead of also allowing SSLv2).
+- Zend\I18n\Translator
+  - Loader\LoaderInterface was splitted into Loader\FileLoaderInterface and
+    Loader\RemoteLoaderInterface. The latter one will be used in ZF 2.1 for
+    a database loader.
+  - Translator::addTranslationPattern() and the option "translation_patterns"
+    were renamed to Translator::addTranslationFilePattern and
+    "translation_file_patterns".
+  - A new method Translator::addRemoteTranslations() was added.
+- Zend\Mvc
+  - Application no longer defines the "application" identifier for its composed
+    EventManager instance. If you had listeners listening on that context,
+    update them to use "Zend\Mvc\Application". See this thread for more details:
+
+      http://zend-framework-community.634137.n4.nabble.com/Change-to-Zend-Mvc-Application-s-event-identifiers-tp4656517.html
+
+  - The redirect plugin's toRoute() method signature is now synced with that of
+    the url plugin's fromRoute() method.
+  - The PRG plugin now allows passing no arguments; if you do so, the currently
+    matched route will be used for the redirect.
+- Zend\Paginator
+  - Removes the factory() and related methods. This was done to be more
+    consistent with other components, and also because the utility was not
+    terribly useful; in most cases, developers needed to configure the adapter
+    up-front anyways.
+- Zend\Stdlib
+  - ClassMethods Hydrator now supports boolean getters prefixed with "is".
+- Zend\Validator
+  - DB validators no longer mix positional and named parameters.
+</pre>
+
+<p>
+    The <a href="http://github.com/zendframework/ZendSkeletonApplication">skeleton
+    application</a> and a <a
+    href="http://github.com/zendframework/ZendSkeletonModule">skeleton
+    module</a> have been updated for 2.0.0rc6, and are a 
+    great place to look to help get you started. You may also want to check out the <a
+    href="http://packages.zendframework.com/docs/latest/manual/en/user-guide/overview.html">user guide
+    </a>, as it provides a comprehensive tutorial for building a ZF2 application.
+</p>
+
+<p>
+    As a reminder, all ZF2 components are also available individually as <a 
+    href="http://pear2.php.net">Pyrus</a> AND <a 
+    href="http://getcomposer.org">composer</a> packages; <a 
+    href="http://packages.zendframework.com">packages.zendframework.com</a> 
+    is our official channel for both package formats.
+</p>
+
+<p>
+    I'd like to thank each and every person who has contributed ideas, feedback, 
+    pull requests (no pull request is too small!), testing, and more -- we're
+    almost to the goal of a stable next-generation framework!
+</p><div class="social-media">
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="zfdevteam">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+
+<div class="social-media">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-like" data-send="true" data-width="450" data-show-faces="true"></div>
+</div>
+
+<div class="social-media">
+<div class="g-plusone" data-size="medium" data-annotation="inline"></div>
+</div>
+
+<!-- Place this render call where appropriate -->
+<script type="text/javascript">
+require(["dojo/domReady!"], function(){
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+});
+</script>
+
+<div class="social-media">
+<a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="http://www.reddit.com/static/spreddit1.gif" alt="submit to reddit" border="0" /> </a>
+</div>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_developer = 1;
+        var disqus_shortname = 'zf2blog';
+        var disqus_identifier = 'zend-framework-2-0-0rc6-released';
+        var disqus_url = 'http://mwop.net/blog//zend-framework-2-0-0rc6-released.html';
+        var disqus_title = 'Zend Framework 2.0.0rc6 Released!';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a></article>
+
+
+
+      </div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <footer id="wrapper-footer">
+      <div id="footer">
+        <div id="group-links">
+          <div class="links">
+            <h4>About</h4>
+            <ul>
+              <li class="link-highlight"><a href="/about/">Overview</a></li>
+              <li><a href="/about/faq/">ZF2 FAQ</a></li>
+              <li><a href="/about/faq-v1/">ZF1 FAQ</a></li>
+
+                            <li><a href="/security/">Security</a></li>
+              <li><a href="/changelog/">Changelog</a></li>
+              <li><a href="/blog/index.html">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="links">
+            <h4>Learn</h4>
+            <ul>
+              <li><a href="/manual/2.0/en/user-guide/overview.html">User Guide</a></li>
+              <li><a href="/manual/2.0/en/index.html">Reference Guide</a></li>
+              <li><a href="/docs/api/">APIs</a></li>
+<!--              <li><a href="">Webinars</a></li>-->
+              <li><a href="/learn/training-and-certification/">Training & Certification</a></li>
+              <li><a href="/learn/support-and-consulting/">Support & Consulting</a></li>
+            </ul>
+          </div>
+
+          <div class="links">
+            <h4>Get Started</h4>
+            <ul>
+              <li><a href="/downloads/">Downloads</a></li>
+              <li><a href="/downloads/skeleton-app">Get the Skeleton App</a></li>
+              <li><a href="/downloads/phpcloud">Try on <span class="link-highlight">phpcloud.com</span></a></li>
+            </ul>
+          </div>
+
+          <div class="links">
+            <h4>Participate</h4>
+            <ul>
+              <li><a href="/participate/">Overview</a></li>
+              <li><a href="/participate/contributor-guide/">Contributors Guide</a></li>
+                            <li><a href="/participate/blogs/">Blogs</a></li>
+                          </ul>
+          </div>
+
+          <div id="contact-menu">
+            <h4>Contact Us</h4>
+            <ul>
+              <li><a href="/contact">form</a></li>
+              <li><a href="/archives/">mailing lists</a></li>
+              <li><a href="/irc/">IRC</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="footer-copyright">
+          <p>&copy; 2006 - 2012 by Zend Technologies Ltd. All rights reserved.</p>
+          <a href="#wrapper-head-top" id="to_top"><img src="/images/arrow.png" width="22" height="20" alt="back to top" /></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" language="javascript" src="/js/elqNow/elqCfg.js"></script>
+    <script type="text/javascript" language="javascript" src="/js/elqNow/elqImg.js"></script>
+    <script type="text/javascript" language="javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+    <noscript>
+    <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1072138399/?value=0&amp;label=PTX5CIfdwAMQn5Ge_wM&amp;guid=ON&amp;script=0"/>
+    </div>
+    </noscript>
+
+        <!-- BEGIN LivePerson Monitor. --><script language='javascript'> var lpMTagConfig = {'lpServer' : "server.iad.liveperson.net",'lpNumber' : "10919998",'lpProtocol' : "https"}; function lpAddMonitorTag(src){if(typeof(src)=='undefined'||typeof(src)=='object'){src=lpMTagConfig.lpMTagSrc?lpMTagConfig.lpMTagSrc:'/hcp/html/mTag.js';}if(src.indexOf('http')!=0){src=lpMTagConfig.lpProtocol+"://"+lpMTagConfig.lpServer+src+'?site='+lpMTagConfig.lpNumber;}else{if(src.indexOf('site=')<0){if(src.indexOf('?')<0)src=src+'?';else src=src+'&';src=src+'site='+lpMTagConfig.lpNumber;}};var s=document.createElement('script');s.setAttribute('type','text/javascript');s.setAttribute('charset','iso-8859-1');s.setAttribute('src',src);document.getElementsByTagName('head').item(0).appendChild(s);} if (window.attachEvent) window.attachEvent('onload',lpAddMonitorTag); else window.addEventListener("load",lpAddMonitorTag,false);</script><!-- END LivePerson Monitor. -->
+  </body>
+</html>

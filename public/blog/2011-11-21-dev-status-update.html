@@ -1,0 +1,461 @@
+<!DOCTYPE html><html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+
+    <title>2011-11-21 Dev status update - Zend Framework - Zend Framework</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <link href="/css/main.css" media="screen" rel="stylesheet" type="text/css" >
+<link href="/images/Application/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" >
+<link href="/css/ZfSiteBlog/blog.css" media="screen" rel="stylesheet" type="text/css" >
+<link href="/blog/feed-atom.xml" rel="alternate" type="application/atom+xml" title="Zend Framework Atom Feed" >
+<link href="/blog/feed-rss.xml" rel="alternate" type="application/rss+xml" title="Zend Framework RSS Feed" >
+<link href="/security/feed/" rel="alternate" type="application/rss+xml" title="Zend Framework Security Advisories" >
+<link href="/blog/feed-rss.xml" rel="alternate" type="application/rss+xml" title="Zend Framework Blog RSS Feed" >
+<link href="/blog/feed-atom.xml" rel="alternate" type="application/atom+xml" title="Zend Framework Blog Atom Feed" >
+<link href="/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" >
+        <script data-dojo-config="async: true, dojoBlankHtmlUrl: '/js/ZfSiteBlog/blank.html',
+    packages: [ 
+        {
+            name: 'ZfSiteBlog',
+            location: '/js/ZfSiteBlog'
+        } ]" src="//ajax.googleapis.com/ajax/libs/dojo/1.8.0/dojo/dojo.js"></script>
+    
+    <script type="text/javascript">
+    //<!--
+    require(["ZfSiteBlog/blog"]);    //-->
+</script>
+        <script type="text/javascript">
+        function setCustomVar() {
+            var t = _gat._getTrackerByName();
+            if (t._getVisitorCustomVar(1) === undefined) {
+                t._setCustomVar(1, 'subdomains', '<value:framework>', 2);
+            }
+        }
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-291885-1']);
+        _gaq.push(['_setDomainName', '.zend.com']);
+        _gaq.push(setCustomVar);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+        })();
+
+        var google_conversion_id = 1072138399;
+        var google_conversion_label = "PTX5CIfdwAMQn5Ge_wM";
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+    </script>
+  </head>
+  <body>
+    <div id="wrapper-head-top">
+      <div id="head-top">
+        <div id="head-top-logo">
+            <a href="/">
+            <img src="/images/logo.png" width="173" height="41" alt="Zend Framework" />
+          </a>
+        </div>
+        <div id="head-top-search">
+          <form method="get" action="///www.google.com/search" target="_blank">
+            <input type="text" name="q" value="" maxlength="255" placeholder="Search in the site" />
+            <input type="hidden" name="sitesearch" value="framework.zend.com" />
+          </form>
+        </div>
+        <div id="head-top-nav">
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/learn">Learn</a></li>
+            <li><a href="/downloads/">Get Started</a></li>
+            <li><a href="/participate/">Participate</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="top-header-shadow"></div>
+    <a href="https://github.com/zendframework/zf2"><img style="position: absolute; top: 66px; right: 0; border: 0;" src="/images/fork-us-on-github.png" alt="Fork us on GitHub"></a>
+        <div id="main-content-wrapper">
+      <div id="site-content">
+          <div class="overview">
+    <ul>
+        <li><a href="/blog/index.html">Return to entries</a></li>
+    </ul>
+    <aside class="four columns offset-by-one omega sidebar blog">
+        <div class="metadata">
+            <ul>
+                <li>Posted on <b>2011-11-21 13:35:00</b>.</li>
+                <li>Last updated on <b>2011-11-21 13:35:00</b>.</li>
+            </ul>
+        </div>
+    </aside>
+    
+    </div>
+    
+      <div class="main-content two">
+        <h1 style="text-align: right">ZF Blog</h1>
+
+<article class="eleven columns alpha blog">
+<h2>2011-11-21 Dev status update</h2>
+<p>
+    What's going on in ZF2 development this week?
+</p>
+
+<p>
+A few things!
+</p><h2 id="toc_3.1">Repository Changes!</h2>
+
+<p>
+We've now moved our canonical repository to GitHub, which is where most folks
+were forking and doing development anyways. The reasons were several:
+</p>
+
+<ul class="ul">
+<li>
+The main reason for self-hosting was to make checking CLA status simpler. As
+   ZF2 development no longer requires a CLA, this reason is gone.
+</li>
+<li>
+ACLs for providing commit access are easier to manage on GitHub, and do not
+   require us to first receive SSH keys from contributors.
+</li>
+<li>
+Using GitHub directly simplifies the pull request process. When
+   self-hosting, we would merge and push to the canonical repo, and then need to
+   manually close the pull request; using GitHub, PRs are automatically closed
+   when the code is merged. Additionally, because the mirroring only occurred a
+   few times per day, it was not immediately evident on GitHub when a change
+   was available to test.
+</li>
+<li>
+There was often confusion by developers on where the most current changes
+   were, particularly if they forked from the GitHub repository.
+</li>
+</ul>
+
+<p>
+The practical upshot is that if you had git.zendframework.com as a remote on
+your repository, you should remove it. If you didn't have a
+github.com/zendframework/zf2 remote, you should add one. The
+<a href="http://bit.ly/zf2gitguide">ZF2 Git Guide</a> details adding the remote.
+</p>
+
+<h2 id="toc_3.2">MVC Developments</h2>
+
+<p>
+Two big things occurred in the MVC this week.
+</p>
+
+<p>
+First, we did some re-thinking of the duties of the Module Manager. Previously,
+it was responsible for merging configuration and firing module initialization.
+A recommended part of module initialization was to initialize autoloading.
+</p>
+
+<p>
+What we noticed was:
+</p>
+
+<ul class="ul">
+<li>
+Configuration merging was getting more complex, and we were getting
+   potentially incompatible feature requests.
+</li>
+<li>
+Our modules were getting hard dependencies on things like autoloaders, and
+   were also introducing a lot of boiler-plate code.
+</li>
+<li>
+We had no clear path to how we might cache autoloading configuration for
+   production.
+</li>
+<li>
+We were noticing more and more places where we might want to loop through the
+   loaded modules in order to trigger methods of interest.
+</li>
+</ul>
+
+<p>
+So, the solution was to change things: <code>Zend\Module\Manager::loadModule()</code> now
+triggers a "loadModule" event, passing it the newly created module. This allows
+listeners to react to modules real-time as they're loaded. 
+</p>
+
+<p>
+This also meant that the code for the following actions could be moved to
+listeners:
+</p>
+
+<ul class="ul">
+<li>Autoloading</li>
+<li>Configuration loading</li>
+<li>Module "initialization"</li>
+</ul>
+
+<p>
+This allows modules that look like this:
+</p>
+
+<pre class="highlight">
+namespace Blog;
+
+use InvalidArgumentException,
+    Zend\EventManager\StaticEventManager,
+    Zend\Module\Consumer\AutoloaderProvider;
+
+class Module implements AutoloaderProvider
+{
+    public function init()
+    {
+        $events = StaticEventManager::getInstance();
+        $events->attach('bootstrap', 'bootstrap', array($this, 'bootstrap'));
+    }
+
+    public function getAutoloaderConfig()
+    {
+        return array(
+            'Zend\Loader\ClassMapAutoloader' => array(
+                __DIR__ . '/autoload_classmap.php'
+            ),
+        );
+    }
+
+    public function getConfig()
+    {
+        return include __DIR__ . '/configs/module.config.php';
+    }
+    
+    /* ... */
+}
+</pre>
+
+<p>
+This looks about the same as before! The differences are:
+</p>
+
+<ul class="ul">
+<li><code>getAutoloaderConfig()</code> can simply return an array of options to pass to
+   <code>Zend\Loader\AutoloaderFactory</code>. This allows us to obtain a fully configured
+   autoloader at the end -- which we will eventually be able to cache, and thus
+   eliminate the need for the autoloader listener.
+</li>
+<li><code>getConfig()</code> is no longer called directly by the module manager, but instead
+   by a listener. Again, this will make it possible to cache the full
+   application configuration.
+</li>
+<li><code>init()</code> is called by a listener now. </li>
+</ul>
+
+<p>
+In other words, the differences are largely under the hood. But those
+differences mean that it's trivially easy to develop your own listeners to tie
+into the module loading process in order to do interesting things -- all without
+needing to touch or extend the main module manager.
+</p>
+
+<h2 id="toc_3.3">Application Configuration</h2>
+
+<p>
+Several people indicated that much as they like module configuration merging,
+they weren't liking the solutions for overriding configuration at the
+application level. The solutions to date have been:
+</p>
+
+<ul class="ul">
+<li>Register the module with overrides last -- for instance, your Application module.</li>
+<li>Create a configuration-only module that registers last.</li>
+</ul>
+
+<p>
+The consensus was that a module for simply providing configuration overrides
+"sucks", and that using the "Application" module sometimes was problematic
+(especially for purposes of registering view script paths).
+</p>
+
+<p>
+The solution was to add some logic to provide application-level configuration.
+This was added to the configuration listener, and allows for you to specify a
+directory with configuration (ala "conf.d" style configuration now commonly used
+across a number of *nix distributions); this configuration is then merged after
+module configuration is aggregated. Your <code>index.php</code> would then contain
+something like the following:
+</p>
+
+<pre class="highlight">
+$moduleManager = new Zend\Module\Manager($appConfig['modules']);
+$listenerOptions = new Zend\Module\Listener\ListenerOptions($appConfig['module_listener_options']);
+$moduleManager->setDefaultListenerOptions($listenerOptions);
+$moduleManager->getConfigListener()->addConfigGlobPath(dirname(__DIR__) . '/config/autoload/*.config.php');
+$moduleManager->loadModules();
+</pre>
+
+<p>
+Hopefully, these changes will simplify how app-specific configuration is
+managed.
+</p>
+
+<h2 id="toc_3.4">Beta2 is coming!</h2>
+
+<p>
+Beta2 is coming up soon! We're hoping to have it ready by the end of the month.
+The components currently under development for beta2 include:
+</p>
+
+<ul class="ul">
+    <li>Zend\Log</li>
+    <li>Zend\Cache</li>
+    <li>Zend\Mail</li>
+</ul>
+
+<p>
+Cache is mostly complete and needs some review and input regarding its usage of
+the EventManager. Log and Mail are currently under development. We encourage
+you to reach out on the #zftalk.2 IRC channel on Freenode or the zf-contributors
+mailing list if you would like to assist with testing or development of these
+components.
+</p>
+
+<h2 id="toc_3.5">IRC meeting this week</h2>
+
+<p>
+We have another <a 
+href="http://framework.zend.com/wiki/display/ZFDEV2/2011-11-23+Meeting+Agenda">IRC 
+meeting this week</a>. Follow the link to see the agenda -- and add to it if 
+you want to discuss additional topics. 
+</p><div class="social-media">
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="zfdevteam">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+
+<div class="social-media">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-like" data-send="true" data-width="450" data-show-faces="true"></div>
+</div>
+
+<div class="social-media">
+<div class="g-plusone" data-size="medium" data-annotation="inline"></div>
+</div>
+
+<!-- Place this render call where appropriate -->
+<script type="text/javascript">
+require(["dojo/domReady!"], function(){
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+});
+</script>
+
+<div class="social-media">
+<a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="http://www.reddit.com/static/spreddit1.gif" alt="submit to reddit" border="0" /> </a>
+</div>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_developer = 1;
+        var disqus_shortname = 'zf2blog';
+        var disqus_identifier = '2011-11-21-dev-status-update';
+        var disqus_url = 'http://mwop.net/blog//2011-11-21-dev-status-update.html';
+        var disqus_title = '2011-11-21 Dev status update';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a></article>
+
+
+
+      </div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <footer id="wrapper-footer">
+      <div id="footer">
+        <div id="group-links">
+          <div class="links">
+            <h4>About</h4>
+            <ul>
+              <li class="link-highlight"><a href="/about/">Overview</a></li>
+              <li><a href="/about/faq/">ZF2 FAQ</a></li>
+              <li><a href="/about/faq-v1/">ZF1 FAQ</a></li>
+
+                            <li><a href="/security/">Security</a></li>
+              <li><a href="/changelog/">Changelog</a></li>
+              <li><a href="/blog/index.html">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="links">
+            <h4>Learn</h4>
+            <ul>
+              <li><a href="/manual/2.0/en/user-guide/overview.html">User Guide</a></li>
+              <li><a href="/manual/2.0/en/index.html">Reference Guide</a></li>
+              <li><a href="/docs/api/">APIs</a></li>
+<!--              <li><a href="">Webinars</a></li>-->
+              <li><a href="/learn/training-and-certification/">Training & Certification</a></li>
+              <li><a href="/learn/support-and-consulting/">Support & Consulting</a></li>
+            </ul>
+          </div>
+
+          <div class="links">
+            <h4>Get Started</h4>
+            <ul>
+              <li><a href="/downloads/">Downloads</a></li>
+              <li><a href="/downloads/skeleton-app">Get the Skeleton App</a></li>
+              <li><a href="/downloads/phpcloud">Try on <span class="link-highlight">phpcloud.com</span></a></li>
+            </ul>
+          </div>
+
+          <div class="links">
+            <h4>Participate</h4>
+            <ul>
+              <li><a href="/participate/">Overview</a></li>
+              <li><a href="/participate/contributor-guide/">Contributors Guide</a></li>
+                            <li><a href="/participate/blogs/">Blogs</a></li>
+                          </ul>
+          </div>
+
+          <div id="contact-menu">
+            <h4>Contact Us</h4>
+            <ul>
+              <li><a href="/contact">form</a></li>
+              <li><a href="/archives/">mailing lists</a></li>
+              <li><a href="/irc/">IRC</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="footer-copyright">
+          <p>&copy; 2006 - 2012 by Zend Technologies Ltd. All rights reserved.</p>
+          <a href="#wrapper-head-top" id="to_top"><img src="/images/arrow.png" width="22" height="20" alt="back to top" /></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" language="javascript" src="/js/elqNow/elqCfg.js"></script>
+    <script type="text/javascript" language="javascript" src="/js/elqNow/elqImg.js"></script>
+    <script type="text/javascript" language="javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+    <noscript>
+    <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1072138399/?value=0&amp;label=PTX5CIfdwAMQn5Ge_wM&amp;guid=ON&amp;script=0"/>
+    </div>
+    </noscript>
+
+        <!-- BEGIN LivePerson Monitor. --><script language='javascript'> var lpMTagConfig = {'lpServer' : "server.iad.liveperson.net",'lpNumber' : "10919998",'lpProtocol' : "https"}; function lpAddMonitorTag(src){if(typeof(src)=='undefined'||typeof(src)=='object'){src=lpMTagConfig.lpMTagSrc?lpMTagConfig.lpMTagSrc:'/hcp/html/mTag.js';}if(src.indexOf('http')!=0){src=lpMTagConfig.lpProtocol+"://"+lpMTagConfig.lpServer+src+'?site='+lpMTagConfig.lpNumber;}else{if(src.indexOf('site=')<0){if(src.indexOf('?')<0)src=src+'?';else src=src+'&';src=src+'site='+lpMTagConfig.lpNumber;}};var s=document.createElement('script');s.setAttribute('type','text/javascript');s.setAttribute('charset','iso-8859-1');s.setAttribute('src',src);document.getElementsByTagName('head').item(0).appendChild(s);} if (window.attachEvent) window.attachEvent('onload',lpAddMonitorTag); else window.addEventListener("load",lpAddMonitorTag,false);</script><!-- END LivePerson Monitor. -->
+  </body>
+</html>

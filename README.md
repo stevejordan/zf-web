@@ -1,110 +1,90 @@
-This is the github repository of the Zend Framework web site
+Zend Framework Website, v2.0
+============================
 
-    http://framework.zend.com/
+This is the next incarnation of the Zend Framework website, written using ZF2.
 
-The source code of the web site is not complete. We removed some parts like the
-manuals (see below), but most of the web site is here; the ZF2 module is fully
-included (http://framework.zend.com/zf2).
+Installation
+------------
 
-This web site uses the libraries ZF 1.11 and ZF 2.0.0beta3.
+First step is grabbing dependencies. Run the following:
 
-To run this web site on your local machine you have to configure the following
-files:
+    php composer.phar install
 
-- document_root/index.php 
-  - add your ZF 1.11 path, on line 11
+At that point, you can test with the built-in webserver of PHP 5.4:
 
-- Copy app/etc/config.ini.dist to app/etc/config.ini, and update as follows:
-  - Be sure that the cache.baseDir folder is writable from the web server.
-  - Be sure to read the section entitled "Documentation" and follow the
-    instructions there.
-  - Update the following with valid credentials/API keys:
-    - jira.credentials.username/jira.credentials.password -- should be a valid
-      user/pass pair for the ZF JIRA instance.
-    - service.akismet.key should be a valid Akismet API key
-    - recaptcha.pubkey/recaptcha.privkey should be your public/private keypair
-      for ReCaptcha
-  - You may want to disable caching: 
-    resources.cachemanager.content.frontend.options.caching  = 0
-    resources.cachemanager.search.frontend.options.caching   = 0
-    resources.cachemanager.zfstatus.frontend.options.caching = 0
-  - To get the "pretty" font headers, you should enable the dynamic header
-    learning:
-    dynamicheader.options.learning = 1
+    cd public
+    php -S localhost:8080
 
-- Create a symlink from "working" to a directory containing a ZF checkout.
+Alternately, configure a virtual host in the webserver of your choice.
 
-- app/jobs/agilezen.php (configure only if you want to update the kanban data)
-  - add your ZF 2.0.0beta3 path, on line 19
-  - add the API key of AgileZen, on line 30;
+Reference Guide
+---------------
 
-- app/jobs/invite_agile.php (configure only if you want to activate the invitation
-  of AgileZen in the kanban system)
-  - add your ZF 2.0.0beta3 path, on line 19;
-  - add the API key of AgileZen, on line 31;
-  - add the path to the log file, on line 60.
+To configure the Reference Guide of ZF1 and ZF2, edit the file
+``config/autoload/module.manual.global.php`` and modify the variables named
+``$zf1ManualPath`` and ``$zf2ManualPath``, respectively. 
 
-- Run the following scripts:
-  - app/jobs/generateContributorsList.php
-  - app/jobs/getChangelogData.php
-  - app/jobs/processFaq.php
-  - app/jobs/agilezen.php (if testing/using the AgileZen integration)
+Each path is related to a specific language and version of the reference guide.
+For instance, the English version of the 2.0 documentation is represented by:
 
-## Documentation
+    'zf_document_path' => array(
+        '2.0' => array (
+            'en' => 'path to /zf2-documentation/docs/_build/html/'
+        )
+    )
 
-The online manual utilizes two key resources that are regenerated and/or
-updated on new ZF releases. To allow them to be released on a separate timeline
-from the main website, we keep these in a separate repository:
+The path of ZF2 documentation must point to the contents of a documenation build
+folder, generally found in ``docs/_build/html/`` of the [zf2-documentation project](https://github.com/zendframework/zf2-documentation); 
+if you use the documentation distribution archives, you would simply point to
+the directory in which you unpack the archive. The configuration paths must
+end with the ``/`` (slash) character.
 
-    git clone git://git.zendframework.com/zfweb-manual.git
+The 2.0 documentation files are generated using the
+[Sphinx](http://sphinx.pocoo.org/) project. For more information on how to
+generate the ZF2 documentation, read the
+[CONTRIBUTE.md](https://github.com/zendframework/zf2-documentation/blob/master/CONTRIBUTE.md)
+file of the [zf2-documentation project](https://github.com/zendframework/zf2-documentation).
 
-The structure of this repository is as follows:
+The path of the ZF1 documentation must point to the folder
+``views/manual/$VERSION/$LANG/`` of the
+``git://git.zendframework.com/zfweb-manual.git`` project, where ``$VERSION`` is
+the version of Zend Framework, and ``$LANG`` is the language. As with the ZF2
+configuration, the path must end with the ``/`` (slash) character.
 
-    indexes/
-        X.Y/ (one directory per minor version of the framework)
-    views/
-        manual/
-            X.Y/ (one directory per minor version of the framework)
-                de/
-                en/
-                fr/
-                ja/
-                ru/
-                zh/
 
-The "indexes" directory contains the generated Lucene index for each version of
-the manual, and for each language offerred. The "views" directory contains view
-scripts consumed by the website.
+Blog posts
+----------
 
-After cloning the repository, you will need to update your app/etc/config.ini as
-follows:
+Want to post something on the blog?
 
-    ; This should point to the "views" directory of your checkout
-    manual.views        =   "/var/local/framework/manual/views"
+Create a post in ``data/posts`` that returns a ``PhlyBlog\Model\EntryEntity``
+(you can use an existing post as a template). Then, simply send a pull request,
+and we'll review for inclusion.
 
-    ; This should point to the "indexes" directory of your checkout
-    index.manual.path        = "/var/local/framework/manual/indexes"
+To compile the blog, do the following from the root of the application:
 
-Make sure the "views" directory is readable by the web server. The "indexes"
-directory should both be readable and writable by the web server (as
-Zend_Search_Lucene requires the ability to write read locks in that directory).
+```php
+% php public/index.php blog compile -e -c -r
+```
 
-## Release Tarballs
+Then add and commit the new and updated files.
 
-The ReleaseModel links to releases in the document_root/releases directory --
-which is deliberately empty in this archive. Currently, these are kept in a
-separate SVN repository, and a working checkout of the respository is symlinked
-to that path. Each release is in a directory named "ZendFramework-X.Y.Z", and
-contains tarballs and zipballs of the full release, minimal release, API
-documentation, and compiled manual for each language.
+Generating Changelogs
+---------------------
 
-We plan to offer the releases as a repository at a future date, potentially as
-a git submodule.
+To generate the ZF1 changelog, execute the following:
 
-## API Documentation
+```bash
+% php public/index.php changelog fetch zf1
+```
 
-Currently, built API documentation is available on the site. In production, we
-have symlinks of each version pointing to a location with built documentation.
-We plan to offer a separate git repository at a later date with built
-documentation that we will incorporate via a git submodule.
+This will, by default, write to `data/zf1-changelog.php`. You will need to
+ensure your local configuration includes appropriate JIRA credentials.
 
+To generate the ZF2 changelog, execute the following:
+
+```bash
+% php public/index.php changelog fetch zf2
+```
+
+This will, by default, write to `data/zf2-changelog.php`.;
